@@ -43,22 +43,30 @@ public class Main {
         double deductedAmount = income - deductions;
 
         if (deductedAmount >= 1 && deductedAmount <= 237100) {
-
             taxAmount = deductedAmount * (18.0 / 100);
 
         } else if (deductedAmount >= 237101 && deductedAmount <= 370500) {
-
-            taxAmount = 42678 + ((deductedAmount - 237100) * (26.0 /100));
+            taxAmount = 42678 + ((deductedAmount - 237100) * (26.0 / 100));
 
         } else if (deductedAmount >= 370501 && deductedAmount <= 512800) {
+            taxAmount = 77362 + ((deductedAmount - 370500) * (31.0 / 100));
 
-            taxAmount = 77362 + ((deductedAmount - 370500) * (31.0 /100));
+        } else if (deductedAmount >= 512801 && deductedAmount <= 673000) {
+            taxAmount = 121475 + ((deductedAmount - 512800) * (36.0 / 100));
 
-        } else {
+        } else if (deductedAmount >= 673001 && deductedAmount <= 857900) {
+            taxAmount = 179147 + ((deductedAmount - 673000) * (39.0 / 100));
 
+        } else if (deductedAmount >= 857901 && deductedAmount <= 1817000) {
+            taxAmount = 251258 + ((deductedAmount - 857900) * (41.0 / 100));
+
+        } else if (deductedAmount >= 1817001) {
+            taxAmount = 644489 + ((deductedAmount - 1817000) * (45.0 / 100));
+
+        }
+        else {
             System.out.println("Invalid input");
             return -1;
-
         }
         return taxAmount;
     }
