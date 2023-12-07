@@ -10,9 +10,11 @@ public class Main {
 
         Scanner scan = new Scanner(System.in);
 
+        System.out.println("\n");
         System.out.println("What type of tax would you like to calculate? (Type in full)");
         System.out.println("""
                 1. Income tax
+                2. updating soon...
                 """);
         type = scan.nextLine();
         System.out.println("``````````````````````````````````````````````");
@@ -24,7 +26,7 @@ public class Main {
             System.out.println("Enter your deductions amount: ");
             deductions = scan.nextDouble();
 
-            double tax = calculateTax(income, deductions);
+            double tax = calculateIncomeTax(income, deductions);
 
             if (tax != -1) {
                 System.out.printf("Calculated tax: R %.2f%n", tax);
@@ -36,7 +38,7 @@ public class Main {
         }
     }
 
-    public static double calculateTax(double income, double deductions) {
+    public static double calculateIncomeTax(double income, double deductions) {
         double taxAmount;
         double deductedAmount = income - deductions;
 
@@ -47,6 +49,10 @@ public class Main {
         } else if (deductedAmount >= 237101 && deductedAmount <= 370500) {
 
             taxAmount = 42678 + ((deductedAmount - 237100) * (26.0 /100));
+
+        } else if (deductedAmount >= 370501 && deductedAmount <= 512800) {
+
+            taxAmount = 77362 + ((deductedAmount - 370500) * (31.0 /100));
 
         } else {
 
